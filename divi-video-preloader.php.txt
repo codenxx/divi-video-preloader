@@ -1,0 +1,21 @@
+<?php
+/*
+Plugin Name: Divi Video Preloader
+Description: Adds a custom pre-loading image for all videos in Divi.
+Version: 1.0
+Author: Dennis
+*/
+
+// Enqueue scripts and styles
+function divi_video_preloader_enqueue_scripts() {
+    wp_enqueue_script('divi-video-preloader-script', plugin_dir_url(__FILE__) . 'divi-video-preloader.js', array('jquery'), '1.0', true);
+}
+
+add_action('wp_enqueue_scripts', 'divi_video_preloader_enqueue_scripts');
+
+// Add custom image for video preloading
+function divi_video_preloader_image() {
+    echo '<img src="https://veneers.net.au/wp-content/uploads/2023/11/bambino-entertainment.webp" alt="Preload Image" style="display: none;" class="divi-preload-image">';
+}
+
+add_action('wp_footer', 'divi_video_preloader_image');
